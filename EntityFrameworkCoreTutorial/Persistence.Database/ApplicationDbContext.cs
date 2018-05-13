@@ -20,6 +20,8 @@ namespace Persistence.Database
         protected override void OnModelCreating(ModelBuilder builder)
         {
             new SongConfiguration(builder.Entity<Song>());
+            new AuthorConfiguration(builder.Entity<Author>());
+            new AlbumConfiguration(builder.Entity<Album>());
 
             base.OnModelCreating(builder);
         }

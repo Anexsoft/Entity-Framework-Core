@@ -13,5 +13,9 @@ namespace Persistence.Database.Models
         public int AuthorId { get; set; }
 
         public List<Song> Songs { get; set; }
+
+        public DateTime? PublishedAt { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

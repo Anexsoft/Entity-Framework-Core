@@ -6,14 +6,13 @@ using System.Text;
 
 namespace Persistence.Database.Config
 {
-    public class SongConfiguration
+    public class AlbumConfiguration
     {
-        public SongConfiguration(EntityTypeBuilder<Song> entityBuilder)
+        public AlbumConfiguration(EntityTypeBuilder<Album> entityBuilder)
         {
             entityBuilder.HasKey(x => x.Id);
             entityBuilder.Property(x => x.Title).HasMaxLength(50).IsRequired();
-            entityBuilder.Property(x => x.Description).HasMaxLength(200).IsRequired();
-            entityBuilder.HasIndex(x => new { x.Title, x.AlbumId }).IsUnique();
+            entityBuilder.HasQueryFilter(x => !x.Deleted);
         }
     }
 }

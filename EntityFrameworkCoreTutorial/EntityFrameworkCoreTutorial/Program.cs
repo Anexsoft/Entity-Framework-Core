@@ -9,7 +9,7 @@ namespace EntityFrameworkCoreTutorial
     {
         static void Main(string[] args)
         {
-            FirtExample();
+            SecondExample();
         }
 
         // Primer ejemplo
@@ -36,6 +36,20 @@ namespace EntityFrameworkCoreTutorial
                 Title = "The Trooper",
                 Duration = TimeSpan.FromSeconds(250),
                 AlbumId = album.Id
+            });
+        }
+
+        // Validar restricción
+        static void SecondExample()
+        {
+            var songService = new SongService();
+
+            songService.Add(new Song
+            {
+                Description = "Es una canción escrita por el bajista Steve Harris publicado el 20 de junio de 1983",
+                Title = "The Trooper",
+                Duration = TimeSpan.FromSeconds(250),
+                AlbumId = 1
             });
         }
     }

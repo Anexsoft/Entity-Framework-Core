@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Persistence.Database.Models
+﻿namespace Persistence.Database.Models
 {
     public class Author
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string AboutMe { get; set; }
     }
 }
