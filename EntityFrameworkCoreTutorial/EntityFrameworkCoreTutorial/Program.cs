@@ -9,7 +9,7 @@ namespace EntityFrameworkCoreTutorial
     {
         static void Main(string[] args)
         {
-            ThirdExample();
+            FourthExample();
         }
 
         // Primer ejemplo
@@ -72,6 +72,14 @@ namespace EntityFrameworkCoreTutorial
             songService.Update(newEntry);
 
             songService.Delete(newEntry.Id);
+        }
+
+        // Select de varias tablas
+        static void FourthExample()
+        {
+            var songService = new SongService();
+
+            var result = songService.GetAll3();
         }
     }
 }

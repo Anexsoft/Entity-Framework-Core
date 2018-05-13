@@ -1,5 +1,7 @@
-﻿using Persistence.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using Persistence.Database;
 using Persistence.Database.Models;
+using Services.Dto;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,6 +63,47 @@ namespace Services
                              .ToList()
                 );
             }
+        }
+
+        public List<SongDto> GetAll2()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return GetSongDtoBaseQuery(ctx).ToList();
+            }
+        }
+
+        public List<SongDto> GetAll3()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return GetSongDtoBaseQuery(ctx).OrderBy(x => x.Author).ToList();
+            }
+        }
+
+        public List<SongDto> GetAll4()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return GetSongDtoBaseQuery(ctx).OrderBy(x => x.Duration).ToList();
+            }
+        }
+
+        public IQueryable<SongDto> GetSongDtoBaseQuery(ApplicationDbContext ctx)
+        {
+            return (
+                from s in ctx.Songs
+                join a in ctx.Albums on s.AlbumId equals a.Id
+                join at in ctx.Authors on a.AuthorId equals at.Id
+                select new SongDto
+                {
+                    Album = a.Title,
+                    Author = at.Name,
+                    Duration = s.Duration,
+                    Title = s.Title,
+                    SongId = s.Id
+                }
+            ).AsQueryable();
         }
     }
 }

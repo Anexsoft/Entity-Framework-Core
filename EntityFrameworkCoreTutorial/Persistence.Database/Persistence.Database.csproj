@@ -8,6 +8,9 @@
     <Compile Remove="Migrations\20180512224650_AddSongContraints.cs" />
     <Compile Remove="Migrations\20180512225206_AddSongRelations.cs" />
     <Compile Remove="Migrations\20180512225809_AddSongRelations.cs" />
+    <Compile Remove="Migrations\20180513012830_NewSqlView.cs" />
+    <Compile Remove="Migrations\20180513013102_SqlView.cs" />
+    <Compile Remove="Migrations\20180513013138_SqlView.cs" />
   </ItemGroup>
 
   <ItemGroup>
