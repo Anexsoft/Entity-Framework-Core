@@ -105,5 +105,22 @@ namespace Services
                 }
             ).AsQueryable();
         }
+
+        public List<Song> GetFromProcedure()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Songs
+                          .FromSql("USP_GetSongs").ToList();
+            }
+        }
+
+        public Song GetFromProcedure(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Songs.FromSql("USP_GetSongs @p0", id).Single();
+            }
+        }
     }
 }

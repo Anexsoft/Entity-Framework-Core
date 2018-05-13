@@ -16,6 +16,8 @@ namespace Persistence.Database.Models
 
         public DateTime? PublishedAt { get; set; }
 
+        public int TotalSongs { get; set; }
+
         public bool Deleted { get; set; }
     }
 }
