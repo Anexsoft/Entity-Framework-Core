@@ -9,7 +9,7 @@ namespace EntityFrameworkCoreTutorial
     {
         static void Main(string[] args)
         {
-            SecondExample();
+            ThirdExample();
         }
 
         // Primer ejemplo
@@ -51,6 +51,27 @@ namespace EntityFrameworkCoreTutorial
                 Duration = TimeSpan.FromSeconds(250),
                 AlbumId = 1
             });
+        }
+
+        // Métodos crud
+        static void ThirdExample()
+        {
+            var songService = new SongService();
+
+            var newEntry = new Song
+            {
+                Description = "Excelente canción de Metallica",
+                Title = "Nothing Else Matter",
+                Duration = TimeSpan.FromSeconds(350),
+                AlbumId = 2
+            };
+
+            songService.Add(newEntry);
+
+            newEntry.Title = "One";
+            songService.Update(newEntry);
+
+            songService.Delete(newEntry.Id);
         }
     }
 }
